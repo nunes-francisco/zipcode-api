@@ -45,6 +45,13 @@ class ZipHandler(tornado.web.RequestHandler):
                     'release_date': date.today().isoformat()}
         self.write(response)
 
+class ZipCodeHandler(tornado.web.RequestHandler):
+    def get(self, id):
+        response = {'id': int(id),
+                    'cep': '06180-000',
+                    'version': f'{version}',
+                    'release_date': date.today().isoformat()}
+        self.write(response)
 
 application = tornado.web.Application([
     (r"/api/([0-9]+)", ZipHandler),
